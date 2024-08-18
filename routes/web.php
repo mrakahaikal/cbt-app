@@ -12,9 +12,9 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-// Route::get('/dashboard', function () {
-//     return view('dashboard');
-// })->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -44,7 +44,7 @@ Route::middleware('auth')->group(function () {
             ->middleware('role:teacher')
             ->name('course.course_students.create');
         // Menyimpan data student
-        Route::psot('course/students/save/{course}', [CourseStudentController::class, 'store'])
+        Route::post('course/students/save/{course}', [CourseStudentController::class, 'store'])
             ->middleware('role:teacher')
             ->name('course.course_students.store');
 
