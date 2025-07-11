@@ -49,8 +49,8 @@ class RolePermissionSeeder extends Seeder
 
         // membuat data user super admin
         $user = User::create([
-            'name' => 'Lusy',
-            'email' => 'lusy@cbt-app.com',
+            'name' => 'Raka',
+            'email' => 'raka@cbt-app.com',
             'password' => bcrypt('password'),
         ]);
 

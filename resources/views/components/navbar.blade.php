@@ -17,7 +17,7 @@
                 <img src="{{ asset('images/icons/notification.svg') }}" alt="icon">
             </a>
         </div>
-        <div class="h-[46px] w-[1px] flex shrink-0 border border-[#EEEEEE]"></div>
+        <div class="h-[46px] w-px flex shrink-0 border border-[#EEEEEE]"></div>
         <div class="flex gap-3 items-center">
             <div class="flex flex-col text-right">
                 <p class="text-sm text-[#7F8190]">Howdy</p>

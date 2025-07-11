@@ -35,7 +35,8 @@ Route::middleware('auth')->group(function () {
 
         Route::resource('/course_questions', CourseQuestionController::class)
             ->middleware('role:teacher');
-        // Melihat daftar student
+        
+            // Melihat daftar student
         Route::get('course/students/show/{course}', [CourseStudentController::class, 'index'])
             ->middleware('role:teacher')
             ->name('course.course_students.index');

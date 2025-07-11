@@ -74,6 +74,10 @@ class CourseController extends Controller
     public function show(Course $course)
     {
         //
+        $students = $course->students()->orderBy('id', 'DESC')->get();
+        $questions = $course->questions()->orderBy('id', 'DESC')->get();
+
+        return view('admin.courses.manage', compact('course', 'students', 'questions'));
     }
 
     /**
@@ -126,7 +130,6 @@ class CourseController extends Controller
      */
     public function destroy(Course $course)
     {
-        //
         try {
             $course->delete();
             return redirect()->route('dashboard.course.index');
