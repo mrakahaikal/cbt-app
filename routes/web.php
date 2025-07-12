@@ -33,10 +33,10 @@ Route::middleware('auth')->group(function () {
             ->middleware('role:teacher')
             ->name('course.create.question.store');
 
-        Route::resource('/course_questions', CourseQuestionController::class)
+        Route::resource('/course-questions', CourseQuestionController::class)
             ->middleware('role:teacher');
-        
-            // Melihat daftar student
+
+        // Melihat daftar student
         Route::get('course/students/show/{course}', [CourseStudentController::class, 'index'])
             ->middleware('role:teacher')
             ->name('course.course_students.index');

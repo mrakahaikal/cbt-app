@@ -8,54 +8,22 @@
             <li>
                 <h3 class="font-bold text-xs text-[#A5ABB2]">DAILY USE</h3>
             </li>
-            <li>
-                <a href=""
-                    class="p-[10px_16px] flex items-center gap-[14px] rounded-full h-11 transition-all duration-300 hover:bg-[#2B82FE]">
-                    <div>
-                        <img src="{{ asset('images/icons/home-hashtag.svg' ) }}" alt="icon">
-                    </div>
-                    <p class="font-semibold transition-all duration-300 hover:text-white">Overview</p>
-                </a>
-            </li>
-            <li>
-                <a href=""
-                    class="p-[10px_16px] flex items-center gap-[14px] rounded-full h-11 bg-[#2B82FE] transition-all duration-300 hover:bg-[#2B82FE]">
-                    <div>
-                        <img src="{{ asset('images/icons/note-favorite.svg' ) }}" alt="icon">
-                    </div>
-                    <p class="font-semibold text-white transition-all duration-300 hover:text-white">Courses</p>
-                </a>
-            </li>
-            <li>
-                <a href=""
-                    class="p-[10px_16px] flex items-center gap-[14px] rounded-full h-11 transition-all duration-300 hover:bg-[#2B82FE]">
-                    <div>
-                        <img src="{{ asset('images/icons/profile-2user.svg' ) }}" alt="icon">
-                    </div>
-                    <p class="font-semibold transition-all duration-300 hover:text-white">Students</p>
-                </a>
-            </li>
-            <li>
-                <a href=""
-                    class="p-[10px_16px] flex items-center gap-[14px] rounded-full h-11 transition-all duration-300 hover:bg-[#2B82FE]">
-                    <div>
-                        <img src="{{ asset('images/icons/sms-tracking.svg' ) }}" alt="icon">
-                    </div>
-                    <p class="font-semibold transition-all duration-300 hover:text-white">Messages</p>
-                    <div class="notif w-5 h-5 flex shrink-0 rounded-full items-center justify-center bg-[#F6770B]">
-                        <p class="font-bold text-[10px] leading-[15px] text-white">12</p>
-                    </div>
-                </a>
-            </li>
-            <li>
-                <a href=""
-                    class="p-[10px_16px] flex items-center gap-[14px] rounded-full h-11 transition-all duration-300 hover:bg-[#2B82FE]">
-                    <div>
-                        <img src="{{ asset('images/icons/chart-2.svg' ) }}" alt="icon">
-                    </div>
-                    <p class="font-semibold transition-all duration-300 hover:text-white">Analytics</p>
-                </a>
-            </li>
+
+            <x-sidebar-link href="#" icon="images/icons/home-hashtag.svg" routeName="dashboard.courses*">
+                Overview
+            </x-sidebar-link>
+            <x-sidebar-link href="#" icon="images/icons/note-favorite.svg" routeName="dashboard.courses.index">
+                Courses
+            </x-sidebar-link>
+            <x-sidebar-link href="#" icon="images/icons/profile-2user.svg" routeName="#">
+                Students
+            </x-sidebar-link>
+            <x-sidebar-link href="#" icon="images/icons/sms-tracking.svg" routeName="#" badge="12">
+                Messages
+            </x-sidebar-link>
+            <x-sidebar-link href="#" icon="images/icons/chart-2.svg" routeName="#">
+                Analytics
+            </x-sidebar-link>
         </ul>
         <ul class="flex flex-col gap-3">
             <li>
@@ -65,7 +33,7 @@
                 <a href=""
                     class="p-[10px_16px] flex items-center gap-[14px] rounded-full h-11 transition-all duration-300 hover:bg-[#2B82FE]">
                     <div>
-                        <img src="{{ asset('images/icons/3dcube.svg' ) }}" alt="icon">
+                        <img src="{{ asset('images/icons/3dcube.svg') }}" alt="icon">
                     </div>
                     <p class="font-semibold transition-all duration-300 hover:text-white">Rewards</p>
                 </a>
@@ -74,7 +42,7 @@
                 <a href=""
                     class="p-[10px_16px] flex items-center gap-[14px] rounded-full h-11 transition-all duration-300 hover:bg-[#2B82FE]">
                     <div>
-                        <img src="{{ asset('images/icons/code.svg' ) }}" alt="icon">
+                        <img src="{{ asset('images/icons/code.svg') }}" alt="icon">
                     </div>
                     <p class="font-semibold transition-all duration-300 hover:text-white">A.I Plugins</p>
                 </a>
@@ -83,7 +51,7 @@
                 <a href=""
                     class="p-[10px_16px] flex items-center gap-[14px] rounded-full h-11 transition-all duration-300 hover:bg-[#2B82FE]">
                     <div>
-                        <img src="{{ asset('images/icons/setting-2.svg' ) }}" alt="icon">
+                        <img src="{{ asset('images/icons/setting-2.svg') }}" alt="icon">
                     </div>
                     <p class="font-semibold transition-all duration-300 hover:text-white">Settings</p>
                 </a>
@@ -92,7 +60,7 @@
                 <a href="signin.html"
                     class="p-[10px_16px] flex items-center gap-[14px] rounded-full h-11 transition-all duration-300 hover:bg-[#2B82FE]">
                     <div>
-                        <img src="{{ asset('images/icons/security-safe.svg' ) }}" alt="icon">
+                        <img src="{{ asset('images/icons/security-safe.svg') }}" alt="icon">
                     </div>
                     <p class="font-semibold transition-all duration-300 hover:text-white">Logout</p>
                 </a>
@@ -102,7 +70,7 @@
     <a href="">
         <div class="w-full flex gap-3 items-center p-4 rounded-[14px] bg-[#0A090B] mt-[30px]">
             <div>
-                <img src="{{ asset('images/icons/crown-round-bg.svg' ) }}" alt="icon">
+                <img src="{{ asset('images/icons/crown-round-bg.svg') }}" alt="icon">
             </div>
             <div class="flex flex-col gap-[2px]">
                 <p class="font-semibold text-white">Get Pro</p>
