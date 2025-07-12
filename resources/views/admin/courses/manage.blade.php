@@ -48,12 +48,12 @@
                 </div>
             </div>
         </div>
-        <div class="relative">
-            <a href="#" id="more-button"
+        <div class="relative" x-data="{dropdownOpen: false}">
+            <button @click="dropdownOpen =!dropdownOpen" id="more-button"
                 class="toggle-button w-[46px] h-[46px] flex shrink-0 rounded-full items-center justify-center border border-[#EEEEEE]">
                 <img src="{{ asset('images/icons/more.svg')}}" alt="icon">
-            </a>
-            <div
+            </button>
+            <div x-show="dropdownOpen"
                 class="dropdown-menu absolute right-0 top-[66px] w-[270px] flex flex-col gap-4 p-5 border border-[#EEEEEE] bg-white rounded-[18px] transition-all duration-300 shadow-[0_10px_16px_0_#0A090B0D]">
                 <a href="{{ route('dashboard.course.course_students.create', $course) }}"
                     class="flex gap-[10px] items-center">
@@ -118,9 +118,9 @@
                         <p class="font-bold text-xl">{{ $question->question }}</p>
                     </div>
                     <div class="flex items-center gap-[14px]">
-                        <a href="{{ route('dashboard.course_questions.edit', $question) }}"
+                        <a href="{{ route('dashboard.course-questions.edit', $question) }}"
                             class="bg-[#0A090B] p-[14px_30px] rounded-full text-white font-semibold">Edit</a>
-                        <form method="POST" action="{{ route('dashboard.course_questions.destroy', $question) }}">
+                        <form method="POST" action="{{ route('dashboard.course-questions.destroy', $question) }}">
                             @csrf
                             @method('delete')
                             <button type="submit"

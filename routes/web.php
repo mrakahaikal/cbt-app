@@ -1,12 +1,13 @@
 <?php
 
+use Livewire\Volt\Volt;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CourseController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\LearningController;
 use App\Http\Controllers\CourseStudentController;
-use App\Http\Controllers\CourseQuestionController;
 use App\Http\Controllers\StudentAnswerController;
+use App\Http\Controllers\CourseQuestionController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -43,6 +44,10 @@ Route::middleware('auth')->group(function () {
             Route::post('course/students/save/{course}', [CourseStudentController::class, 'store'])
                 ->name('course.course_students.store');
         });
+
+        Volt::route('messages', 'pages.messages.index')->name('messages');
+        Volt::route('analytics', 'pages.admin.analytics.index')->name('analytics');
+
 
         // Rute untuk student
         Route::get('learning/finished/{course}', [LearningController::class, 'learning_finished'])

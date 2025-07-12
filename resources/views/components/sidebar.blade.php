@@ -10,35 +10,49 @@
                 <h3 class="font-bold text-xs text-[#A5ABB2]">DAILY USE</h3>
             </li>
 
-            <x-sidebar-link href="{{ route('dashboard.index') }}" icon="solar-home-bold-duotone"
-                routeName="dashboard.index">
+            <x-sidebar-link :href="route('dashboard.index')" icon="solar-home-bold-duotone" routeName="dashboard.index">
                 Overview
             </x-sidebar-link>
-            <x-sidebar-link href="{{ route('dashboard.courses.index') }}" icon="solar-book-bookmark-bold-duotone"
+            <x-sidebar-link :href="route('dashboard.courses.index')" icon="solar-book-bookmark-bold-duotone"
                 routeName="dashboard.courses.index">
                 Courses
             </x-sidebar-link>
+            @role("teacher")
             <x-sidebar-link href="#" icon="solar-users-group-two-rounded-bold-duotone" routeName="#">
                 Students
             </x-sidebar-link>
-            <x-sidebar-link href="#" icon="solar-chat-line-bold-duotone" routeName="#" badge="12">
+            @endrole
+            @role("student")
+            <x-sidebar-link href="#" icon="solar-crown-star-bold-duotone" routeName="#">
+                Certificates
+            </x-sidebar-link>
+            @endrole
+            <x-sidebar-link :href="route('dashboard.messages')" icon="solar-chat-line-bold-duotone" routeName="#"
+                badge="12">
                 Messages
             </x-sidebar-link>
-            <x-sidebar-link href="#" icon="solar-chart-2-bold-duotone" routeName="#">
+            @role("teacher")
+            <x-sidebar-link :href="route('dashboard.analytics')" icon="solar-chart-2-bold-duotone" routeName="#">
                 Analytics
             </x-sidebar-link>
+            @endrole
+            @role("student")
+            <x-sidebar-link href="#" icon="solar-cup-star-bold-duotone" routeName="#">
+                Portfolio
+            </x-sidebar-link>
+            @endrole
         </ul>
         <ul class="flex flex-col gap-3">
             <li>
                 <h3 class="font-bold text-xs text-[#A5ABB2]">OTHERS</h3>
             </li>
-            <x-sidebar-link href="#" icon="solar-cup-star-bold-duotone" routeName="#">
+            <x-sidebar-link href="#" icon="solar-medal-star-bold-duotone" routeName="#">
                 Rewards
             </x-sidebar-link>
             <x-sidebar-link href="#" icon="solar-programming-bold-duotone" routeName="#" badge="Beta">
                 AI Plugins
             </x-sidebar-link>
-            <x-sidebar-link href="{{ route('profile.edit') }}" icon="solar-settings-bold-duotone" routeName="profile*">
+            <x-sidebar-link :href="route('profile.edit')" icon="solar-settings-bold-duotone" routeName="profile*">
                 Settings
             </x-sidebar-link>
             <form method="POST" action="{{ route('logout') }}">
