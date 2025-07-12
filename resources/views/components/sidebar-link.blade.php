@@ -20,7 +20,7 @@
             </p>
         </div>
         @if($badge)
-            <div class="notif w-5 h-5 flex shrink-0 rounded-full items-center justify-center bg-accent">
+            <div class="py-1 px-2 flex shrink-0 rounded-full items-center justify-center bg-accent">
                 <p class="font-bold text-[10px] leading-[15px] text-white">{{ $badge }}</p>
             </div>
         @endif

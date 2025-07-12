@@ -10,10 +10,12 @@
                 <h3 class="font-bold text-xs text-[#A5ABB2]">DAILY USE</h3>
             </li>
 
-            <x-sidebar-link href="#" icon="solar-home-bold-duotone" routeName="dashboard.courses*">
+            <x-sidebar-link href="{{ route('dashboard.index') }}" icon="solar-home-bold-duotone"
+                routeName="dashboard.index">
                 Overview
             </x-sidebar-link>
-            <x-sidebar-link href="#" icon="solar-book-bookmark-bold-duotone" routeName="dashboard.courses.index">
+            <x-sidebar-link href="{{ route('dashboard.courses.index') }}" icon="solar-book-bookmark-bold-duotone"
+                routeName="dashboard.courses.index">
                 Courses
             </x-sidebar-link>
             <x-sidebar-link href="#" icon="solar-users-group-two-rounded-bold-duotone" routeName="#">
@@ -33,15 +35,20 @@
             <x-sidebar-link href="#" icon="solar-cup-star-bold-duotone" routeName="#">
                 Rewards
             </x-sidebar-link>
-            <x-sidebar-link href="#" icon="solar-programming-bold-duotone" routeName="#">
+            <x-sidebar-link href="#" icon="solar-programming-bold-duotone" routeName="#" badge="Beta">
                 AI Plugins
             </x-sidebar-link>
-            <x-sidebar-link href="#" icon="solar-settings-bold-duotone" routeName="#">
+            <x-sidebar-link href="{{ route('profile.edit') }}" icon="solar-settings-bold-duotone" routeName="profile*">
                 Settings
             </x-sidebar-link>
-            <x-sidebar-link href="#" icon="solar-logout-3-bold-duotone" routeName="#">
-                Logout
-            </x-sidebar-link>
+            <form method="POST" action="{{ route('logout') }}">
+                @csrf
+                <x-sidebar-link :href="route('logout')" onclick="event.preventDefault();
+                                        this.closest('form').submit();" icon="solar-logout-3-bold-duotone"
+                    routeName="#">
+                    Logout
+                </x-sidebar-link>
+            </form>
         </ul>
     </div>
     <a href="">
