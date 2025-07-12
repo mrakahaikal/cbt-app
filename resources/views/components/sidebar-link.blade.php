@@ -4,6 +4,7 @@
     $isActive = Route::currentRouteName() === $routeName || request()->is($routeName);
     $activeClass = $isActive ? 'bg-secondary' : '';
     $textClass = $isActive ? 'text-white' : '';
+    $iconClass = $isActive ? 'text-white' : 'text-primary/50 group-hover:text-white';
 @endphp
 
 <li>
@@ -12,7 +13,7 @@
 ]) }} wire:navigate>
         <div class="flex items-center gap-3.5">
             @if($icon)
-                <img src="{{ asset($icon) }}" alt="icon">
+                @svg($icon, "size-6 transition-all duration-300 $iconClass")
             @endif
             <p class="font-semibold transition-all duration-300 group-hover:text-white {{ $textClass }}">
                 {{ $slot }}

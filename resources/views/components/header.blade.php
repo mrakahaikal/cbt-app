@@ -1,6 +1,7 @@
 <div class="nav flex justify-between p-5 border-b border-[#EEEEEE]">
     <form class="search flex items-center w-[400px] h-[52px] p-[10px_16px] rounded-full border border-[#EEEEEE]">
-        <input type="text" class="font-semibold placeholder:text-[#7F8190] placeholder:font-normal w-full outline-none"
+        <input type="search"
+            class="font-semibold placeholder:text-[#7F8190] placeholder:font-normal w-full outline-none"
             placeholder="Search by report, student, etc" name="search">
         <button type="submit" class="ml-[10px] w-8 h-8 flex items-center justify-center">
             <img src="{{ asset('images/icons/search.svg') }}" alt="icon">
@@ -21,7 +22,7 @@
         <div class="flex gap-3 items-center">
             <div class="flex flex-col text-right">
                 <p class="text-sm text-[#7F8190]">Howdy</p>
-                <p class="font-semibold">Fany Alqo</p>
+                <p class="font-semibold">{{ Auth::user()->name }}</p>
             </div>
             <div class="w-[46px] h-[46px]">
                 <img src="{{ asset('images/photos/default-photo.svg') }}" alt="photo">

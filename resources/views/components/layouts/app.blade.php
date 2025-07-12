@@ -15,7 +15,7 @@
     <section id="content" class="flex">
         <x-sidebar />
         <div id="menu-content" class="flex flex-col w-full pb-[30px]">
-            <x-navbar />
+            <x-header />
             {{ $slot }}
         </div>
     </section>

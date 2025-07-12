@@ -22,32 +22,27 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
     Route::prefix('dashboard')->name('dashboard.')->group(function () {
-        Route::resource('courses', CourseController::class)
-            ->middleware('role:teacher');
+        Route::middleware('role:teacher')->group(function () {
+            Route::resource('courses', CourseController::class);
 
-        Route::get('/course/question/create/{course}', [CourseQuestionController::class, 'create'])
-            ->middleware('role:teacher')
-            ->name('course.create.question');
+            Route::get('/course/question/create/{course}', [CourseQuestionController::class, 'create'])
+                ->name('course.create.question');
 
-        Route::post('/course/question/save/{course}', [CourseQuestionController::class, 'store'])
-            ->middleware('role:teacher')
-            ->name('course.create.question.store');
+            Route::post('/course/question/save/{course}', [CourseQuestionController::class, 'store'])
+                ->name('course.create.question.store');
 
-        Route::resource('/course-questions', CourseQuestionController::class)
-            ->middleware('role:teacher');
+            Route::resource('/course-questions', CourseQuestionController::class);
 
-        // Melihat daftar student
-        Route::get('course/students/show/{course}', [CourseStudentController::class, 'index'])
-            ->middleware('role:teacher')
-            ->name('course.course_students.index');
-        // Membuat data student
-        Route::get('course/students/create/{course}', [CourseStudentController::class, 'create'])
-            ->middleware('role:teacher')
-            ->name('course.course_students.create');
-        // Menyimpan data student
-        Route::post('course/students/save/{course}', [CourseStudentController::class, 'store'])
-            ->middleware('role:teacher')
-            ->name('course.course_students.store');
+            // Melihat daftar student
+            Route::get('course/students/show/{course}', [CourseStudentController::class, 'index'])
+                ->name('course.course_students.index');
+            // Membuat data student
+            Route::get('course/students/create/{course}', [CourseStudentController::class, 'create'])
+                ->name('course.course_students.create');
+            // Menyimpan data student
+            Route::post('course/students/save/{course}', [CourseStudentController::class, 'store'])
+                ->name('course.course_students.store');
+        });
 
         // Rute untuk student
         Route::get('learning/finished/{course}', [LearningController::class, 'learning_finished'])

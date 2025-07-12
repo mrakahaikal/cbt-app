@@ -44,7 +44,6 @@
                         {{ \Carbon\Carbon::parse($course->created_at)->format('F j, Y') }}
                     </p>
                 </div>
-
                 @if($course->category->name == 'Programming')
                     <div class="flex shrink-0 w-[170px] items-center justify-center">
                         <p class="p-[8px_16px] rounded-full bg-[#FFF2E6] font-bold text-sm text-[#F6770B]">{{

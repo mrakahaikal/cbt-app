@@ -17,5 +17,6 @@ class Category extends Model
     protected $fillable = [
         'name',
         'slug',
+        'badge_color'
     ];
 }
