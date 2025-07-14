@@ -47,6 +47,7 @@ Route::middleware('auth')->group(function () {
 
         Volt::route('messages', 'pages.messages.index')->name('messages');
         Volt::route('analytics', 'pages.admin.analytics.index')->name('analytics');
+        Volt::route('chat', 'pages.ai_plugin.index')->name('ai');
 
 
         // Rute untuk student

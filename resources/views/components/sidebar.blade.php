@@ -49,7 +49,7 @@
             <x-sidebar-link href="#" icon="solar-medal-star-bold-duotone" routeName="#">
                 Rewards
             </x-sidebar-link>
-            <x-sidebar-link href="#" icon="solar-programming-bold-duotone" routeName="#" badge="Beta">
+            <x-sidebar-link :href="route('dashboard.ai')" icon="solar-programming-bold-duotone" routeName="dashboard.ai" badge="Beta">
                 AI Plugins
             </x-sidebar-link>
             <x-sidebar-link :href="route('profile.edit')" icon="solar-settings-bold-duotone" routeName="profile*">
