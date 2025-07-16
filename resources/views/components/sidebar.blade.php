@@ -1,11 +1,11 @@
-<div id="sidebar"
-    class="w-[270px] flex flex-col shrink-0 min-h-screen justify-between p-[30px] border-r border-[#EEEEEE] bg-[#FBFBFB]">
+<div x-cloak x-bind:class="sidebarIsOpen ? 'translate-x-0' : '-translate-x-90'" id="sidebar"
+    class="w-[270px] flex-col shrink-0 justify-between p-[30px] border-r border-[#EEEEEE] bg-[#FBFBFB] fixed left-0 z-30 flex h-svh border-outline transition-transform duration-300 md:translate-x-0 md:relative">
     <div class="w-full flex flex-col gap-[30px]">
         <a href="/" wire:navigate class="flex items-center justify-start font-bold text-2xl">
             <x-application-logo class="max-h-10 me-2" />
             CBT APP
         </a>
-        <ul class="flex flex-col gap-3">
+        <ul class="flex flex-col gap-3 overflow-auto">
             <li>
                 <h3 class="font-bold text-xs text-[#A5ABB2]">DAILY USE</h3>
             </li>
@@ -49,7 +49,8 @@
             <x-sidebar-link href="#" icon="solar-medal-star-bold-duotone" routeName="#">
                 Rewards
             </x-sidebar-link>
-            <x-sidebar-link :href="route('dashboard.ai')" icon="solar-programming-bold-duotone" routeName="dashboard.ai" badge="Beta">
+            <x-sidebar-link :href="route('dashboard.ai')" icon="solar-programming-bold-duotone" routeName="dashboard.ai"
+                badge="Beta">
                 AI Plugins
             </x-sidebar-link>
             <x-sidebar-link :href="route('profile.edit')" icon="solar-settings-bold-duotone" routeName="profile*">

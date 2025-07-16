@@ -12,11 +12,20 @@
 </head>
 
 <body class="font-poppins text-[#0A090B]">
-    <section id="content" class="flex">
+    <section id="content" x-data="{ sidebarIsOpen: false }" class="relative flex w-full flex-col md:flex-row">
+        <!-- This allows screen readers to skip the sidebar and go directly to the main content. -->
+        <a class="sr-only" href="#main-content">skip to the main content</a>
+        <!-- dark overlay for when the sidebar is open on smaller screens  -->
+        <div x-cloak x-show="sidebarIsOpen" class="fixed inset-0 z-20 bg-surface-dark/10 backdrop-blur-xs md:hidden"
+            aria-hidden="true" x-on:click="sidebarIsOpen = false" x-transition.opacity></div>
         <x-sidebar />
-        <div id="menu-content" class="flex flex-col w-full pb-[30px]">
+        <div id="menu-content" class="h-svh w-full overflow-y-auto">
             <x-header />
-            {{ $slot }}
+            <div id="main-content" class="p-4">
+
+                {{ $slot }}
+
+            </div>
         </div>
     </section>
 
