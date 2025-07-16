@@ -14,8 +14,18 @@ class CourseStudent extends Model
         'id'
     ];
 
-    // public function courses()
-    // {
-    //     return $this->belongsToMany(Course::class, 'course_students', 'user_id', 'course_id');
-    // }
+    protected $fillable = [
+        'user_id',
+        'course_id'
+    ];
+
+    public function course()
+    {
+        return $this->belongsTo(Course::class);
+    }
+
+    public function student()
+    {
+        return $this->belongsTo(User::class);
+    }
 }

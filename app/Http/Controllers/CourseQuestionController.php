@@ -45,7 +45,7 @@ class CourseQuestionController extends Controller
             ]);
 
             foreach ($request->answers as $index => $answerText) {
-                $isCorrect = ($request->correct_answer == $index);
+                $isCorrect = $request->correct_answer == $index;
                 $question->answers()->create([
                     'answer' => $answerText,
                     'is_correct' => $isCorrect,
@@ -58,7 +58,7 @@ class CourseQuestionController extends Controller
         } catch (\Exception $e) {
             DB::rollback();
             $error = ValidationException::withMessages([
-                'system_error' => ['System Error!' . $e->getMEssage()],
+                'system_error' => ['System Error!' . $e->getMessage()],
             ]);
 
             throw $error;

@@ -1,4 +1,4 @@
-<x-layouts.app>
+<x-app-layout>
 
 
     <div class="flex flex-col px-5 mt-5">
@@ -11,122 +11,87 @@
         </div>
     </div>
     <div class="course-list-container flex flex-col px-5 mt-[30px] gap-[30px]">
-        <div class="course-list-header flex flex-nowrap justify-between pb-4 pr-10 border-b border-[#EEEEEE]">
-            <div class="flex shrink-0 w-[300px]">
-                <p class="text-[#7F8190]">Course</p>
-            </div>
-            <div class="flex justify-center shrink-0 w-[150px]">
-                <p class="text-[#7F8190]">Date Created</p>
-            </div>
-            <div class="flex justify-center shrink-0 w-[170px]">
-                <p class="text-[#7F8190]">Category</p>
-            </div>
-            <div class="flex justify-center shrink-0 w-[120px]">
-                <p class="text-[#7F8190]">Action</p>
-            </div>
-        </div>
+        <table class="min-w-full divide-y divide-[#EEEEEE]">
+            <thead>
+                <tr class="course-list-header">
+                    <th class="text-left text-[#7F8190] w-[300px] pb-4 pr-10">Course</th>
+                    <th class="text-center text-[#7F8190] w-[150px] pb-4">Date Created</th>
+                    <th class="text-center text-[#7F8190] w-[170px] pb-4">Category</th>
+                    <th class="text-center text-[#7F8190] w-[120px] pb-4">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                @forelse ($courses as $course)
+                    <tr class="list-items">
+                        <td class="w-[300px] py-4">
+                            <div class="flex items-center gap-4">
+                                <div class="w-16 h-16 flex shrink-0 overflow-hidden rounded-full">
+                                    <img src="{{ Storage::url($course->cover) }}" class="object-cover" alt="thumbnail">
+                                </div>
+                                <div class="flex flex-col gap-[2px]">
+                                    <p class="font-bold text-lg">{{ $course->name }}</p>
+                                    <p class="text-[#7F8190]">Beginners</p>
+                                </div>
+                            </div>
+                        </td>
+                        <td class="w-[150px] text-center py-4">
+                            <p class="font-semibold">
+                                {{ \Carbon\Carbon::parse($course->created_at)->format('F j, Y') }}
+                            </p>
+                        </td>
+                        <td class="w-[170px] text-center py-4">
+                            @if($course->category->name == 'Programming')
+                                <span class="p-[8px_16px] rounded-full w-auto bg-[#FFF2E6] font-bold text-sm text-[#F6770B]">
+                                    {{ $course->category->name }}
+                                </span>
+                            @elseif($course->category->name == 'Bahasa Jepang')
+                                <span class="p-[8px_16px] rounded-full bg-[#EAE8FE] font-bold text-sm text-[#6436F1]">
+                                    {{ $course->category->name }}
+                                </span>
+                            @elseif($course->category->name == 'Digital Marketing')
+                                <span class="p-[8px_16px] rounded-full bg-[#D5EFFE] font-bold text-sm text-[#066DFE]">
+                                    {{ $course->category->name }}
+                                </span>
+                            @endif
+                        </td>
+                        <td class="w-[120px] text-end py-4 ">
+                            <x-dropdown triggerWrapperClass="flex justify-end" align="right" width="48">
+                                <x-slot name="trigger">
+                                    <button
+                                        class="flex items-center justify-center w-10 h-10 rounded-full bg-white border border-[#EEEEEE] shadow hover:shadow-md transition-all duration-300"
+                                        type="button">
+                                        @svg('solar-menu-dots-bold', 'size-5 rotate-90')
+                                    </button>
+                                </x-slot>
 
-        @forelse ($courses as $course)
-            <div class="list-items flex flex-nowrap justify-between pr-10">
-                <div class="flex shrink-0 w-[300px]">
-                    <div class="flex items-center gap-4">
-                        <div class="w-16 h-16 flex shrink-0 overflow-hidden rounded-full">
-                            <img src="{{ Storage::url($course->cover) }}" class="object-cover" alt="thumbnail">
-                        </div>
-                        <div class="flex flex-col gap-[2px]">
-                            <p class="font-bold text-lg">{{ $course->name }}</p>
-                            <p class="text-[#7F8190]">Beginners</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="flex shrink-0 w-[150px] items-center justify-center">
-                    <p class="font-semibold">
-                        {{ \Carbon\Carbon::parse($course->created_at)->format('F j, Y') }}
-                    </p>
-                </div>
-                @if($course->category->name == 'Programming')
-                    <div class="flex shrink-0 w-[170px] items-center justify-center">
-                        <p class="p-[8px_16px] rounded-full bg-[#FFF2E6] font-bold text-sm text-[#F6770B]">{{
-                    $course->category->name }}
-                        </p>
-                    </div>
-                @elseif($course->category->name == 'Bahasa Jepang')
-                    <div class="flex shrink-0 w-[170px] items-center justify-center">
-                        <p class="p-[8px_16px] rounded-full bg-[#EAE8FE] font-bold text-sm text-[#6436F1]">{{
-                    $course->category->name }}
-                        </p>
-                    </div>
-                @elseif($course->category->name == 'Digital Marketing')
-                    <div class="flex shrink-0 w-[170px] items-center justify-center">
-                        <p class="p-[8px_16px] rounded-full bg-[#D5EFFE] font-bold text-sm text-[#066DFE]">{{
-                    $course->category->name }}
-                        </p>
-                    </div>
-                @endif
-
-                <div class="flex shrink-0 w-[120px] items-center">
-                    <div class="relative h-[41px]">
-                        <div
-                            class="menu-dropdown w-[120px] max-h-[41px] overflow-hidden absolute top-0 p-[10px_16px] bg-white flex flex-col gap-3 border border-[#EEEEEE] transition-all duration-300 hover:shadow-[0_10px_16px_0_#0A090B0D] rounded-[18px]">
-                            <button onclick="toggleMaxHeight(this)"
-                                class="flex items-center justify-between font-bold text-sm w-full">
-                                menu
-                                <img src="{{ asset('images/icons/arrow-down.svg') }}" alt="icon">
-                            </button>
-                            <a href="{{ route('dashboard.courses.show', $course) }}"
-                                class="flex items-center justify-between font-bold text-sm w-full">
-                                Manage
-                            </a>
-                            <a href="course-students.html"
-                                class="flex items-center justify-between font-bold text-sm w-full">
-                                Students
-                            </a>
-                            <a href="{{ route('dashboard.courses.edit', $course) }}"
-                                class="flex items-center justify-between font-bold text-sm w-full">
-                                Edit Course
-                            </a>
-
-                            <form method="POST" action="{{ route('dashboard.courses.destroy', $course) }}">
-                                @csrf
-                                @method('DELETE')
-                                <button type="submit"
-                                    class="flex items-center justify-between font-bold text-sm w-full text-[#FD445E]">
-                                    Delete
-                                </button>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        @empty
-        @endforelse
-
-
+                                <x-slot name="content">
+                                    <x-dropdown-link href="{{ route('dashboard.courses.show', $course) }}">
+                                        Manage
+                                    </x-dropdown-link>
+                                    <x-dropdown-link href="#">
+                                        Students
+                                    </x-dropdown-link>
+                                    <x-dropdown-link href="{{ route('dashboard.courses.edit', $course) }}">
+                                        Edit Course
+                                    </x-dropdown-link>
+                                    <form method="POST" action="{{ route('dashboard.courses.destroy', $course) }}">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit"
+                                            class="flex items-center justify-between font-medium text-sm w-full text-[#FD445E] px-4 py-2 rounded-lg hover:bg-gray-50">
+                                            Delete
+                                        </button>
+                                    </form>
+                                </x-slot>
+                            </x-dropdown>
+                        </td>
+                    </tr>
+                @empty
+                    <tr>
+                        <td colspan="4" class="text-center py-8">Ups, tidak ada tes tersedia</td>
+                    </tr>
+                @endforelse
+            </tbody>
+        </table>
     </div>
-
-
-
-    <script>
-        function toggleMaxHeight(button) {
-            const menuDropdown = button.parentElement;
-            menuDropdown.classList.toggle('max-h-fit');
-            menuDropdown.classList.toggle('shadow-[0_10px_16px_0_#0A090B0D]');
-            menuDropdown.classList.toggle('z-10');
-        }
-
-        document.addEventListener('click', function (event) {
-            const menuDropdowns = document.querySelectorAll('.menu-dropdown');
-            const clickedInsideDropdown = Array.from(menuDropdowns).some(function (dropdown) {
-                return dropdown.contains(event.target);
-            });
-
-            if (!clickedInsideDropdown) {
-                menuDropdowns.forEach(function (dropdown) {
-                    dropdown.classList.remove('max-h-fit');
-                    dropdown.classList.remove('shadow-[0_10px_16px_0_#0A090B0D]');
-                    dropdown.classList.remove('z-10');
-                });
-            }
-        });
-    </script>
-</x-layouts.app>
+</x-app-layout>

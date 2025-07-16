@@ -1,7 +1,7 @@
 @props(['icon' => null, 'routeName', 'badge' => null])
 
 @php
-    $isActive = Route::currentRouteName() === $routeName || request()->is($routeName);
+    $isActive = Route::currentRouteName() === $routeName || request()->is($routeName) || Str::startsWith(Route::currentRouteName(), $routeName);
     $activeClass = $isActive ? 'bg-secondary' : '';
     $textClass = $isActive ? 'text-white' : '';
     $iconClass = $isActive ? 'text-white' : 'text-primary/50 group-hover:text-white';

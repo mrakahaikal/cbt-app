@@ -1,4 +1,4 @@
-<x-layouts.app>
+<x-app-layout>
     <div class="flex flex-col gap-10 px-5 mt-5">
         <div class="breadcrumb flex items-center gap-[30px]">
             <a href="#" class="text-[#7F8190] last:text-[#0A090B] last:font-semibold">Home</a>
@@ -85,4 +85,4 @@
             class="w-[500px] h-[52px] p-[14px_20px] bg-[#6436F1] rounded-full font-bold text-white transition-all duration-300 hover:shadow-[0_4px_15px_0_#6436F14D] text-center">Save
             Question</button>
     </form>
-</x-layouts.app>
+</x-app-layout>

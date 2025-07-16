@@ -26,28 +26,33 @@ Route::middleware('auth')->group(function () {
         Route::middleware('role:teacher')->group(function () {
             Route::resource('courses', CourseController::class);
 
-            Route::get('/course/question/create/{course}', [CourseQuestionController::class, 'create'])
+            Route::get('/courses/{course}/question/create', [CourseQuestionController::class, 'create'])
                 ->name('course.create.question');
 
-            Route::post('/course/question/save/{course}', [CourseQuestionController::class, 'store'])
+            Route::post('/courses/{course}/question/save', [CourseQuestionController::class, 'store'])
                 ->name('course.create.question.store');
 
             Route::resource('/course-questions', CourseQuestionController::class);
 
             // Melihat daftar student
-            Route::get('course/students/show/{course}', [CourseStudentController::class, 'index'])
+            Route::get('courses/{course}/students/show', [CourseStudentController::class, 'index'])
                 ->name('course.course_students.index');
             // Membuat data student
-            Route::get('course/students/create/{course}', [CourseStudentController::class, 'create'])
+            Route::get('courses/{course}/students/create', [CourseStudentController::class, 'create'])
                 ->name('course.course_students.create');
             // Menyimpan data student
-            Route::post('course/students/save/{course}', [CourseStudentController::class, 'store'])
+            Route::post('courses/{course}/students/save', [CourseStudentController::class, 'store'])
                 ->name('course.course_students.store');
         });
 
         Volt::route('messages', 'pages.messages.index')->name('messages');
         Volt::route('analytics', 'pages.admin.analytics.index')->name('analytics');
         Volt::route('chat', 'pages.ai_plugin.index')->name('ai');
+
+        Route::prefix('data')->name('data.')->group(function () {
+            Volt::route('categories', 'pages.admin.data.category.index')->name('category.index');
+        });
+
 
 
         // Rute untuk student

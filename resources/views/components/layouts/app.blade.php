@@ -19,7 +19,7 @@
         <div x-cloak x-show="sidebarIsOpen" class="fixed inset-0 z-20 bg-surface-dark/10 backdrop-blur-xs md:hidden"
             aria-hidden="true" x-on:click="sidebarIsOpen = false" x-transition.opacity></div>
         <x-sidebar />
-        <div id="menu-content" class="h-svh w-full overflow-y-auto">
+        <div id="menu-content" class="h-svh w-full">
             <x-header />
             <div id="main-content" class="p-4">
 

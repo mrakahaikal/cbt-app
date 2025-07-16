@@ -13,15 +13,6 @@
             <x-sidebar-link :href="route('dashboard.index')" icon="solar-home-bold-duotone" routeName="dashboard.index">
                 Overview
             </x-sidebar-link>
-            <x-sidebar-link :href="route('dashboard.courses.index')" icon="solar-book-bookmark-bold-duotone"
-                routeName="dashboard.courses.index">
-                Courses
-            </x-sidebar-link>
-            @role("teacher")
-            <x-sidebar-link href="#" icon="solar-users-group-two-rounded-bold-duotone" routeName="#">
-                Students
-            </x-sidebar-link>
-            @endrole
             @role("student")
             <x-sidebar-link href="#" icon="solar-crown-star-bold-duotone" routeName="#">
                 Certificates
@@ -42,6 +33,27 @@
             </x-sidebar-link>
             @endrole
         </ul>
+        @role("teacher")
+        <ul class="flex flex-col gap-3">
+            <li>
+                <h3 class="font-bold text-xs text-[#A5ABB2]">DATA</h3>
+            </li>
+            <x-sidebar-link :href="route('dashboard.courses.index')" icon="solar-book-bookmark-bold-duotone"
+                routeName="dashboard.courses.">
+                Courses
+            </x-sidebar-link>
+            <x-sidebar-link href="#" icon="solar-users-group-two-rounded-bold-duotone" routeName="#">
+                Students
+            </x-sidebar-link>
+            <x-sidebar-link href="#" icon="solar-users-group-two-rounded-bold-duotone" routeName="#">
+                Teachers
+            </x-sidebar-link>
+            <x-sidebar-link :href="route('dashboard.data.category.index')" icon="solar-tag-bold-duotone"
+                routeName="dashboard.data.category.index">
+                Categories
+            </x-sidebar-link>
+        </ul>
+        @endrole
         <ul class="flex flex-col gap-3">
             <li>
                 <h3 class="font-bold text-xs text-[#A5ABB2]">OTHERS</h3>

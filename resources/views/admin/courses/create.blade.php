@@ -1,4 +1,4 @@
-<x-layouts.app>
+<x-app-layout>
 
 
     <div class="flex flex-col gap-10 px-5 mt-5">
@@ -228,4 +228,4 @@
         }
     </script>
 
-</x-layouts.app>
+</x-app-layout>
