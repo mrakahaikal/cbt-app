@@ -1,4 +1,4 @@
-@props(['align' => 'right', 'width' => '48', 'contentClasses' => 'py-1 bg-white', 'triggerWrapperClass' => null])
+@props(['align' => 'right', 'width' => '48', 'contentClasses' => 'py-1 bg-white', 'triggerWrapperClass' => null, 'containerClass' => null])
 
 @php
     $alignmentClasses = match ($align) {
@@ -13,8 +13,7 @@
     };
 @endphp
 
-<div class="relative" {{ $attributes->merge() }} x-data="{ open: false }" @click.outside="open = false"
-    @close.stop="open = false">
+<div class="relative" x-data="{ open: false }" @click.outside="open = false" @close.stop="open = false">
     <div @click="open = ! open" class="{{ $triggerWrapperClass }}">
         {{ $trigger }}
     </div>
@@ -23,7 +22,7 @@
         x-transition:enter-start="opacity-0 scale-95" x-transition:enter-end="opacity-100 scale-100"
         x-transition:leave="transition ease-in duration-75" x-transition:leave-start="opacity-100 scale-100"
         x-transition:leave-end="opacity-0 scale-95"
-        class="absolute z-50 mt-2 {{ $width }} rounded-2xl shadow-xl p-1 border-[#EEEEEE] {{ $alignmentClasses }}"
+        class="absolute z-50 mt-2 {{ $width }} rounded-2xl shadow-xl p-1 border-[#EEEEEE] {{ $alignmentClasses }} {{ $containerClass }}"
         style="display: none;" @click="open = false">
         <div class="{{ $contentClasses }}">
             {{ $content }}

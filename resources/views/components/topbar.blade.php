@@ -21,27 +21,55 @@
     </form>
     <div class="flex items-center gap-4 md:gap-[30px]">
         <div class="flex gap-[14px]">
-            <button
-                class="relative size-8 md:size-[46px] flex shrink-0 items-center justify-center rounded-full border border-[#EEEEEE] hover:bg-secondary/5">
-                @svg('solar-bell-bing-outline', 'size-6')
-                <div
-                    class="absolute inline-flex items-center justify-center w-6 h-6 text-xs font-bold text-white bg-accent border-2 border-white rounded-full -top-2 -end-2">
-                    8</div>
-            </button>
+            <x-dropdown width="w-72" containerClass="bg-surface-alt" contentClasses="px-2 py-4">
+                <x-slot:trigger>
+                    <button
+                        class="relative size-8 md:size-[46px] flex shrink-0 items-center justify-center rounded-full border border-[#EEEEEE] hover:bg-secondary/5">
+                        @svg('solar-bell-bing-outline', 'size-6')
+                        <div
+                            class="absolute inline-flex items-center justify-center w-6 h-6 text-xs font-bold text-white bg-accent border-2 border-white rounded-full -top-2 -end-2">
+                            8</div>
+                    </button>
+                </x-slot:trigger>
+                <x-slot:content>
+                    <p>There's No Notification Available</p>
+                </x-slot:content>
+            </x-dropdown>
+
         </div>
         <div class="h-[46px] w-[1px] flex shrink-0 border border-[#EEEEEE]"></div>
-        <div class="flex gap-3 items-center rounded-xl hover:bg-secondary/5 p-2">
-            <div class="md:flex flex-col text-right hidden">
-                <p class="text-sm text-[#7F8190]">Howdy</p>
-                <p class="font-semibold">{{ Auth::user()->name }}</p>
-            </div>
-            <div class="size-8 md:size-[46px]">
-                @if(!Auth::user()->avatar_url)
-                    @svg('solar-user-circle-bold', 'text-primary/50')
-                @else
-                    <img :src="Auth::user()->avatar_url" :alt="Auth::user()->name" />
-                @endif
-            </div>
+        <div>
+            <x-dropdown align="right" triggerWrapperClass="flex gap-3 items-center rounded-xl hover:bg-secondary/5 p-2">
+                <x-slot:trigger>
+                    <div class="md:flex flex-col text-right hidden">
+                        <span class="text-sm text-[#7F8190]">Howdy</span>
+                        <span class="font-semibold">{{ Auth::user()->name }}</span>
+                    </div>
+                    <button class="size-8 md:size-[46px]">
+                        @if(!Auth::user()->avatar_url)
+                            @svg('solar-user-circle-bold', 'text-primary/50')
+                        @else
+                            <img :src="Auth::user()->avatar_url" :alt="Auth::user()->name" />
+                        @endif
+                    </button>
+                </x-slot:trigger>
+                <x-slot:content>
+                    <x-dropdown-link :href="route('profile.edit')">
+                        {{ __('Profile') }}
+                    </x-dropdown-link>
+
+                    <!-- Authentication -->
+                    <form method="POST" action="{{ route('logout') }}">
+                        @csrf
+
+                        <x-dropdown-link :href="route('logout')" onclick="event.preventDefault();
+                                                this.closest('form').submit();">
+                            {{ __('Log Out') }}
+                        </x-dropdown-link>
+                    </form>
+                </x-slot:content>
+            </x-dropdown>
+
         </div>
     </div>
 </div>

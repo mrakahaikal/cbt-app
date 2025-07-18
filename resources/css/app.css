@@ -22,6 +22,9 @@
     --color-success: #78dcca;
     --color-warning: #78dcca;
     --color-danger: #78dcca;
+
+    --color-surface: #fff;
+    --color-surface-alt: #fbfbfb;
 }
 
 /*
