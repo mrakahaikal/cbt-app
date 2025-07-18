@@ -7,7 +7,7 @@
 
 @custom-variant dark (&:where(.dark, .dark *));
 @theme {
-    --font-sans: Figtree, ui-sans-serif, system-ui, sans-serif,
+    --font-sans: Poppins, ui-sans-serif, system-ui, sans-serif,
         "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol",
         "Noto Color Emoji";
 }
@@ -15,7 +15,7 @@
 @theme {
     --color-primary: #6436f1;
     --color-secondary: #2b82fe;
-    --color-tertiary: #78dcca;
+    --color-tertiary: #0a090b;
     --color-accent: #f6770b;
 
     --color-info: #78dcca;

@@ -14,6 +14,10 @@
                 Overview
             </x-sidebar-link>
             @role("student")
+            <x-sidebar-link :href="route('dashboard.learning.index')" icon="solar-book-bookmark-bold-duotone"
+                routeName="dashboard.learning.">
+                Courses
+            </x-sidebar-link>
             <x-sidebar-link href="#" icon="solar-crown-star-bold-duotone" routeName="#">
                 Certificates
             </x-sidebar-link>
@@ -28,7 +32,8 @@
             </x-sidebar-link>
             @endrole
             @role("student")
-            <x-sidebar-link href="#" icon="solar-cup-star-bold-duotone" routeName="#">
+            <x-sidebar-link :href="route('dashboard.portfolio.index')" icon="solar-cup-star-bold-duotone"
+                routeName="dashboard.portfolio.">
                 Portfolio
             </x-sidebar-link>
             @endrole

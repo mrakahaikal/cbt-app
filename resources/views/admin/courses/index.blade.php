@@ -1,15 +1,14 @@
 <x-app-layout>
 
-
-    <div class="flex flex-col px-5 mt-5">
-        <div class="w-full flex justify-between items-center">
-            <div class="flex flex-col gap-1">
-                <p class="font-extrabold text-[30px] leading-[45px]">Manage Course</p>
-                <p class="text-[#7F8190]">Provide high quality for best students</p>
-            </div>
-            <x-link-button href="{{ route('dashboard.courses.create') }}">Add New Course</x-link-button>
-        </div>
-    </div>
+    <x-heading>
+        Manage Course
+        <x-slot:subtitle>
+            Provide high quality for best students
+        </x-slot:subtitle>
+        <x-slot:action>
+            <x-link-button :href="route('dashboard.courses.create')">Add New Course</x-link-button>
+        </x-slot:action>
+    </x-heading>
     <div class="course-list-container flex flex-col px-5 mt-[30px] gap-[30px]">
         <table class="min-w-full divide-y divide-[#EEEEEE]">
             <thead>

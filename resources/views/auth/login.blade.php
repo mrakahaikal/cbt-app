@@ -11,13 +11,14 @@
 </head>
 
 <body class="font-poppins text-[#0A090B]">
-    <section id="signup" class="flex w-full min-h-[832px]">
+    <section id="sign-in" class="flex w-full min-h-[832px]">
         <nav class="flex items-center px-[50px] pt-[30px] w-full absolute top-0">
-            <div class="flex items-center">
-                <a href="index.html">
-                    <img src="assets/images/logo/logo.svg" alt="logo">
-                </a>
-            </div>
+
+            <a class="flex items-center justify-start font-bold text-2xl" href="/" wire:navigate>
+                <x-application-logo class="max-h-10 me-2" />
+                CBT APP
+            </a>
+
             <div class="flex items-center justify-end w-full">
                 <ul class="flex items-center gap-[30px]">
                     <li>
@@ -30,9 +31,9 @@
                         <a href="" class="font-semibold text-white">Help</a>
                     </li>
                     <li class="h-[52px] flex items-center">
-                        <a href="signin.html"
-                            class="font-semibold text-white p-[14px_30px] bg-[#0A090B] rounded-full text-center">Sign
-                            In</a>
+                        <x-link-button :href="route('register')" class="bg-tertiary">
+                            Sign Up
+                        </x-link-button>
                     </li>
                 </ul>
             </div>
@@ -42,124 +43,88 @@
                 <!-- Session Status -->
                 <x-auth-session-status class="mb-4" :status="session('status')" />
 
-                <form method="POST" action="{{ route('login') }}">
-                    @csrf
 
-                    <!-- Email Address -->
-                    <div>
-                        <x-input-label for="email" :value="__('Email')" />
-                        <x-input-text id="email" class="block mt-1 w-full" type="email" name="email"
-                            :value="old('email')" required autofocus autocomplete="username" />
+                <form class="flex flex-col gap-[30px]  shrink-0" method="POST" action="{{ route('login') }}">
+                    @csrf
+                    <h1 class="font-bold text-2xl leading-9">Sign In</h1>
+                    <div class="flex flex-col gap-2">
+                        <label class="font-semibold" for="email">Email Address</label>
+                        <x-input-text id="email" type="email" name="email" :value="old('email')" required autofocus
+                            autocomplete="username" placeholder="name@example.com" />
                         <x-input-error :messages="$errors->get('email')" class="mt-2" />
                     </div>
-
-                    <!-- Password -->
-                    <div class="mt-4">
-                        <x-input-label for="password" :value="__('Password')" />
-
-                        <x-input-text id="password" class="block mt-1 w-full" type="password" name="password" required
-                            autocomplete="current-password" />
+                    <div class="flex flex-col gap-2">
+                        <label class="font-semibold" for="password">Password</label>
+                        <x-input-text id="password" type="password" name="password" required
+                            autocomplete="current-password" placeholder="Enter your password" />
 
                         <x-input-error :messages="$errors->get('password')" class="mt-2" />
                     </div>
 
                     <!-- Remember Me -->
-                    <div class="block mt-4">
+                    <div class="flex justify-between mt-4">
                         <label for="remember_me" class="inline-flex items-center">
                             <input id="remember_me" type="checkbox"
                                 class="rounded border-gray-300 text-indigo-600 shadow-sm focus:ring-indigo-500"
                                 name="remember">
                             <span class="ms-2 text-sm text-gray-600">{{ __('Remember me') }}</span>
                         </label>
-                    </div>
 
-                    <div class="flex items-center justify-end mt-4">
                         @if (Route::has('password.request'))
                             <a class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
                                 href="{{ route('password.request') }}">
                                 {{ __('Forgot your password?') }}
                             </a>
                         @endif
-
-                        <x-primary-button class="ms-3">
-                            {{ __('Log in') }}
-                        </x-primary-button>
                     </div>
-                </form>
-                <form class="flex flex-col gap-[30px] w-[450px] shrink-0">
-                    <h1 class="font-bold text-2xl leading-9">Sign In</h1>
-                    <div class="flex flex-col gap-2">
-                        <p class="font-semibold">Email Address</p>
-                        <div
-                            class="flex items-center w-full h-[52px] p-[14px_16px] rounded-full border border-[#EEEEEE] focus-within:border-2 focus-within:border-[#0A090B]">
-                            <div class="mr-[14px] w-6 h-6 flex items-center justify-center overflow-hidden">
-                                <img src="assets/images/icons/sms.svg" class="h-full w-full object-contain" alt="icon">
-                            </div>
-                            <input type="email"
-                                class="font-semibold placeholder:text-[#7F8190] placeholder:font-normal w-full outline-none"
-                                placeholder="Write your correct input here" name="email">
-                        </div>
-                    </div>
-                    <div class="flex flex-col gap-2">
-                        <p class="font-semibold">Password</p>
-                        <div
-                            class="flex items-center w-full h-[52px] p-[14px_16px] rounded-full border border-[#EEEEEE] focus-within:border-2 focus-within:border-[#0A090B]">
-                            <div class="mr-[14px] w-6 h-6 flex items-center justify-center overflow-hidden">
-                                <img src="assets/images/icons/lock.svg" class="h-full w-full object-contain" alt="icon">
-                            </div>
-                            <input type="password"
-                                class="font-semibold placeholder:text-[#7F8190] placeholder:font-normal w-full outline-none"
-                                placeholder="Write your correct input here" name="password">
-                        </div>
-                    </div>
-                    <a href="my-course.html"
-                        class="w-full h-[52px] p-[14px_30px] bg-[#6436F1] rounded-full font-bold text-white transition-all duration-300 hover:shadow-[0_4px_15px_0_#6436F14D] text-center">Sign
-                        In to my Account</a>
+                    <x-button>
+                        Sign In to my Account
+                    </x-button>
                 </form>
             </div>
         </div>
         <div class="right-side min-h-screen flex flex-col w-[650px] shrink-0 pb-[30px] pt-[82px] bg-[#6436F1]">
             <div class="h-full w-full flex flex-col items-center justify-center pt-[66px] gap-[100px]">
                 <div class="w-[500px] h-[360px] flex shrink-0 overflow-hidden">
-                    <img src="assets/images/thumbnail/sign-in-illustration.png" class="w-full h-full object-contain"
-                        alt="banner">
+                    <img src="{{ asset('images/thumbnail/sign-in-illustration.png') }}"
+                        class="w-full h-full object-contain" alt="banner">
                 </div>
                 <div class="logos w-full overflow-hidden">
                     <div class="group/slider flex flex-nowrap w-max items-center">
                         <div
                             class="logo-container animate-[slide_15s_linear_infinite] group-hover/slider:pause-animate flex gap-10 pl-10 items-center flex-nowrap">
                             <div class="w-fit flex shrink-0">
-                                <img src="assets/images/logo/logo-51.svg" alt="logo">
+                                <img src="{{ asset('images/logo/logo-51.svg') }}" alt="logo">
                             </div>
                             <div class="w-fit flex shrink-0">
-                                <img src="assets/images/logo/logo-51-1.svg" alt="logo">
+                                <img src="{{ asset('images/logo/logo-51-1.svg') }}" alt="logo">
                             </div>
                             <div class="w-fit flex shrink-0">
-                                <img src="assets/images/logo/logo-52.svg" alt="logo">
+                                <img src="{{ asset('images/logo/logo-52.svg') }}" alt="logo">
                             </div>
                             <div class="w-fit flex shrink-0">
-                                <img src="assets/images/logo/logo-52-1.svg" alt="logo">
+                                <img src="{{ asset('images/logo/logo-52-1.svg') }}" alt="logo">
                             </div>
                             <div class="w-fit flex shrink-0">
-                                <img src="assets/images/logo/logo-51.svg" alt="logo">
+                                <img src="{{ asset('images/logo/logo-51.svg') }}" alt="logo">
                             </div>
                         </div>
                         <div
                             class="logo-container animate-[slide_15s_linear_infinite] group-hover/slider:pause-animate flex gap-10 pl-10 items-center flex-nowrap">
                             <div class="w-fit flex shrink-0">
-                                <img src="assets/images/logo/logo-51.svg" alt="logo">
+                                <img src="{{ asset('images/logo/logo-51.svg') }}" alt="logo">
                             </div>
                             <div class="w-fit flex shrink-0">
-                                <img src="assets/images/logo/logo-51-1.svg" alt="logo">
+                                <img src="{{ asset('images/logo/logo-51-1.svg') }}" alt="logo">
                             </div>
                             <div class="w-fit flex shrink-0">
-                                <img src="assets/images/logo/logo-52.svg" alt="logo">
+                                <img src="{{ asset('images/logo/logo-52.svg') }}" alt="logo">
                             </div>
                             <div class="w-fit flex shrink-0">
-                                <img src="assets/images/logo/logo-52-1.svg" alt="logo">
+                                <img src="{{ asset('images/logo/logo-52-1.svg') }}" alt="logo">
                             </div>
                             <div class="w-fit flex shrink-0">
-                                <img src="assets/images/logo/logo-51.svg" alt="logo">
+                                <img src="{{ asset('images/logo/logo-51.svg') }}" alt="logo">
                             </div>
                         </div>
                     </div>

@@ -56,25 +56,26 @@ Route::middleware('auth')->group(function () {
 
 
         // Rute untuk student
-        Route::get('learning/finished/{course}', [LearningController::class, 'learning_finished'])
-            ->middleware('role:student')
-            ->name('learning.finished.course');
-
-        Route::get('learning/rapport/{course}', [LearningController::class, 'learning_rapport'])
-            ->middleware('role:student')
-            ->name('learning.rapport.course');
         // Menampilkan beberapa kelas yang diberikan oleh guru
-        Route::get('/learning', [LearningController::class, 'index'])
-            ->middleware('role:student')
-            ->name('learning.index');
-        // Buat ngisi jawaban
-        Route::get('/learning/{course}/{question}', [LearningController::class, 'learning'])
-            ->middleware('role:student')
-            ->name('learning.course');
+        Route::middleware('role:student')->group(function () {
+            Volt::route('/learning', 'pages.student.course.index')
+                ->name('learning.index');
 
-        Route::post('/learning/{course}/{question}', [StudentAnswerController::class, 'store'])
-            ->middleware('role:student')
-            ->name('learning.course.answer.store');
+            Volt::route('/portfolio', 'pages.student.portfolio.index')
+                ->name('portfolio.index');
+
+            Route::get('learning/finished/{course}', [LearningController::class, 'learning_finished'])
+                ->name('learning.finished.course');
+
+            Route::get('learning/rapport/{course}', [LearningController::class, 'learning_rapport'])
+                ->name('learning.rapport.course');
+            // Buat ngisi jawaban
+            Route::get('/learning/{course}/{question}', [LearningController::class, 'learning'])
+                ->name('learning.course');
+
+            Route::post('/learning/{course}/{question}', [StudentAnswerController::class, 'store'])
+                ->name('learning.course.answer.store');
+        });
     });
 });
 

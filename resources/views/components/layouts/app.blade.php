@@ -20,12 +20,10 @@
             aria-hidden="true" x-on:click="sidebarIsOpen = false" x-transition.opacity></div>
         <x-sidebar />
         <div id="menu-content" class="h-svh w-full">
-            <x-header />
-            <div id="main-content" class="p-4">
-
+            <x-topbar />
+            <main id="main-content">
                 {{ $slot }}
-
-            </div>
+            </main>
         </div>
     </section>
 
