@@ -51,6 +51,7 @@ Route::middleware('auth')->group(function () {
 
         Route::prefix('data')->name('data.')->group(function () {
             Volt::route('categories', 'pages.admin.data.category.index')->name('category.index');
+            Volt::route('students', 'pages.admin.data.student.index')->name('student.index');
         });
 
 

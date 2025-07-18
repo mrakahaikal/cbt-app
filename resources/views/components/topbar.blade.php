@@ -28,7 +28,8 @@
                         @svg('solar-bell-bing-outline', 'size-6')
                         <div
                             class="absolute inline-flex items-center justify-center w-6 h-6 text-xs font-bold text-white bg-accent border-2 border-white rounded-full -top-2 -end-2">
-                            8</div>
+                            8
+                        </div>
                     </button>
                 </x-slot:trigger>
                 <x-slot:content>

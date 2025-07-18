@@ -47,11 +47,9 @@
                 routeName="dashboard.courses.">
                 Courses
             </x-sidebar-link>
-            <x-sidebar-link href="#" icon="solar-users-group-two-rounded-bold-duotone" routeName="#">
+            <x-sidebar-link :href="route('dashboard.data.student.index')"
+                icon="solar-users-group-two-rounded-bold-duotone" routeName="dashboard.data.student.">
                 Students
-            </x-sidebar-link>
-            <x-sidebar-link href="#" icon="solar-users-group-two-rounded-bold-duotone" routeName="#">
-                Teachers
             </x-sidebar-link>
             <x-sidebar-link :href="route('dashboard.data.category.index')" icon="solar-tag-bold-duotone"
                 routeName="dashboard.data.category.index">

@@ -22,6 +22,9 @@
         <div id="menu-content" class="h-svh w-full">
             <x-topbar />
             <main id="main-content">
+                @isset($breadcrumbs)
+                    {{ Diglactic\Breadcrumbs\Breadcrumbs::render($breadcrumbs) }}
+                @endisset
                 {{ $slot }}
             </main>
         </div>
