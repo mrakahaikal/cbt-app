@@ -32,7 +32,7 @@ Route::middleware('auth')->group(function () {
             Route::post('/courses/{course}/question/save', [CourseQuestionController::class, 'store'])
                 ->name('course.create.question.store');
 
-            Route::resource('/course-questions', CourseQuestionController::class);
+            Route::resource('course-questions', CourseQuestionController::class);
 
             // Melihat daftar student
             Route::get('courses/{course}/students/show', [CourseStudentController::class, 'index'])

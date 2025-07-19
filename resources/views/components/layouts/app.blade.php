@@ -19,11 +19,14 @@
         <div x-cloak x-show="sidebarIsOpen" class="fixed inset-0 z-20 bg-surface-dark/10 backdrop-blur-xs md:hidden"
             aria-hidden="true" x-on:click="sidebarIsOpen = false" x-transition.opacity></div>
         <x-sidebar />
-        <div id="menu-content" class="h-svh w-full">
+        <div id="menu-content" class="h-svh w-full overflow-y-auto">
             <x-topbar />
             <main id="main-content">
                 @isset($breadcrumbs)
                     {{ Diglactic\Breadcrumbs\Breadcrumbs::render($breadcrumbs) }}
+                @endisset
+                @isset($fullBreadcrumbs)
+                    {{ $fullBreadcrumbs }}
                 @endisset
                 {{ $slot }}
             </main>

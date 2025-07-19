@@ -1,4 +1,4 @@
-<div class="nav flex gap-2 items-center justify-between p-5 border-b border-[#EEEEEE]">
+<div class="sticky top-0 z-10 bg-surface nav flex gap-2 items-center justify-between p-5 border-b border-[#EEEEEE]">
     <!-- sidebar toggle button for small screens  -->
     <button type="button"
         class="md:hidden size-[46px] flex shrink-0 items-center justify-center rounded-full border border-[#EEEEEE]"
@@ -15,7 +15,7 @@
             class="font-semibold placeholder:text-[#7F8190] placeholder:font-normal w-full outline-none"
             placeholder="Search by report, student, etc" name="search" />
         <button type="submit"
-            class="ml-[10px] rounded-full w-8 h-8 p-2 cursor-pointer bg-secondary hover:bg-secondary/50 text-white inline-flex items-center justify-center">
+            class="ml-[10px] rounded-full w-8 h-8 p-2 cursor-pointer bg-primary hover:bg-primary/50 text-white inline-flex items-center justify-center">
             @svg('solar-magnifer-outline', 'size-5')
         </button>
     </form>

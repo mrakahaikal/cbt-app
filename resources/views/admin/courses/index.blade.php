@@ -1,5 +1,7 @@
 <x-app-layout>
-    {{ Breadcrumbs::render('manage-course') }}
+    <x-slot:breadcrumbs>
+        manage-course
+    </x-slot:breadcrumbs>
     <x-heading>
         Manage Course
         <x-slot:subtitle>

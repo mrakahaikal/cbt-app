@@ -1,14 +1,7 @@
 <x-app-layout>
-    <div class="flex flex-col gap-10 px-5 mt-5">
-        <div class="breadcrumb flex items-center gap-[30px]">
-            <a href="#" class="text-[#7F8190] last:text-[#0A090B] last:font-semibold">Home</a>
-            <span class="text-[#7F8190] last:text-[#0A090B]">/</span>
-            <a href="{{ route('dashboard.courses.index') }}"
-                class="text-[#7F8190] last:text-[#0A090B] last:font-semibold">Manage Courses</a>
-            <span class="text-[#7F8190] last:text-[#0A090B]">/</span>
-            <a href="#" class="text-[#7F8190] last:text-[#0A090B] last:font-semibold">Course Details</a>
-        </div>
-    </div>
+    <x-slot:fullBreadcrumbs>
+        {{ Diglactic\Breadcrumbs\Breadcrumbs::render('edit-course-question', $course, $courseQuestion) }}
+    </x-slot:fullBreadcrumbs>
     <div class="header ml-[70px] pr-[70px] w-[940px] flex items-center justify-between mt-10">
         <div class="flex gap-6 items-center">
             <div class="w-[150px] h-[150px] flex shrink-0 relative overflow-hidden">
@@ -58,7 +51,7 @@
 
     @endif
 
-    <form method="POST" action="{{ route('dashboard.course_questions.update', $courseQuestion) }}" id="add-question"
+    <form method="POST" action="{{ route('dashboard.course-questions.update', $courseQuestion) }}" id="add-question"
         class="mx-[70px] mt-[30px] flex flex-col gap-5">
         @csrf
         @method('put')
